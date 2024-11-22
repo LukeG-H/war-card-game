@@ -195,13 +195,5 @@ def main():
     print(f"The Winner is: {winner}")
     #  top_card_P1 = player1_hand[0]
 
-    # print(f"Player 1's Hand: {len(player1_hand)}, Player 2's Hand: {len(player2_hand)}\n")
-    # print(f"Player 1's Hand: {player1_hand}\n\nPlayer 2's Hand: {player2_hand}")
-    # print(top_card_P1)
-    
-    # card = deck.dealCardFromDeck()
-    # card2 = deck.dealCardFromDeck()
-    # print(card, card2)
-    # print(deck)
 if __name__ == '__main__':
     main()
