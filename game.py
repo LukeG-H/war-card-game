@@ -66,8 +66,6 @@ def playGame(player1, player2):
     print(f"P1 BEFORE:\n{player1_hand}\n\nP2 BEFORE:\n{player2_hand}\n")
     
     while not game_won:
-        # print(count_rounds)
-
         if len(player1_hand) == 0:
             winner = "Player 2"
             game_won = True
@@ -89,7 +87,7 @@ def playGame(player1, player2):
             print(f"ROUND WINNER: {round_winner}\n")
 
     print(f"P1 AFTER:\n{player1_hand}\n\nP2 AFTER:\n{player2_hand}\n")
-    # print(f"P1 Turns: {player1_turns}, P2 Turns: {player2_turns}, Rounds: {count_rounds}, Game Won: {game_won}")
+
     print(f"After {count_rounds} rounds, the number of rounds won by each player was: {rounds_won}")
             
     return winner
