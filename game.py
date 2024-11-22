@@ -89,7 +89,7 @@ def playGame(player1, player2):
     # don't need player turns -> will be the same as 'rounds'
             player1_turns += 1
             player2_turns += 1
-    # comment this out for actual game         
+    # comment this out for actual game -> set to True to play 1 round of game (for test purposes)     
             game_won = True
             print(f"ROUND WINNER: {round_winner}\n")
 
