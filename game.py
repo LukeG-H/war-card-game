@@ -63,7 +63,7 @@ def playGame(player1, player2):
     rounds_won = {}
     winner = ""
     
-    print(f"P1 BEFORE:\n{player1_hand}\n\nP2 BEFORE:\n{player2_hand}\n")
+    # print(f"P1 BEFORE:\n{player1_hand}\n\nP2 BEFORE:\n{player2_hand}\n")
     
     while not game_won:
         if len(player1_hand) == 0:
@@ -86,7 +86,7 @@ def playGame(player1, player2):
             game_won = True
             print(f"ROUND WINNER: {round_winner}\n")
 
-    print(f"P1 AFTER:\n{player1_hand}\n\nP2 AFTER:\n{player2_hand}\n")
+    # print(f"P1 AFTER:\n{player1_hand}\n\nP2 AFTER:\n{player2_hand}\n")
 
     print(f"After {count_rounds} rounds, the number of rounds won by each player was: {rounds_won}")
             
@@ -156,14 +156,16 @@ def decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, playe
 def goToWar(player1_hand, player2_hand):
 # TODO need to check if either player has 0 cards during the 'war' otherwise 'pop from empty list error' -> probably best to make a function
     war_cards_pot = []
+    print("# WAR ROUND #\n")
+
     for _ in range(0,3):
         player1_carddown = player1_hand.pop(0)
         war_cards_pot.append(player1_carddown)
         player2_carddown = player2_hand.pop(0)
         war_cards_pot.append(player2_carddown)
     
-    print(f"WAR CARDS POT: {war_cards_pot}")
-    print(f"P1 Hand: {player1_hand}\nP2 Hand: {player2_hand}")
+    # print(f"WAR CARDS POT: {war_cards_pot}")
+    # print(f"P1 Hand: {player1_hand}\nP2 Hand: {player2_hand}")
 
     player1_war_card = player1_hand.pop(0)
     print(f"P1 War card: {player1_war_card}")
