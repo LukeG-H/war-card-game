@@ -3,7 +3,7 @@ from game_setup import *
 
 def isGameWon(player1_hand, player2_hand):
     game_won = False
-    winner = None
+    winner = 'Nobody'
 
     if len(player1_hand) == 0:
         game_won = True
@@ -147,11 +147,11 @@ def goToWar(player1_hand, player2_hand):
         player2_war_card = player2_hand.pop(0)
         print(f"P2 War card: {player2_war_card}")
 
-        war_winner, winning_cards = decideWhoWon(player1_war_card,player2_war_card,player1_hand,player2_hand)
-        print(f"WAR WINNER: {war_winner}")
+    war_winner, winning_cards = decideWhoWon(player1_war_card,player2_war_card,player1_hand,player2_hand)
+    print(f"WAR WINNER: {war_winner}")
 
-        war_cards_pot.extend(winning_cards)
-        return war_winner, war_cards_pot
+    war_cards_pot.extend(winning_cards)
+    return war_winner, war_cards_pot
 
 
 def main():
