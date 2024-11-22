@@ -2,7 +2,7 @@
 #       WAR       #
 ###################
 
-This goal of this project was to create a simple implementation of the card game "WAR", in python. 
+The goal of this project was to create a simple implementation of the card game "WAR", in python. 
 This was the result of a work discussion that led to a challenge between a colleague and I.
 The aim being to challenge our programming abilities and to see how we approach the problem differently.
 
