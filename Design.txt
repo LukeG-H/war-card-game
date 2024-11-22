@@ -10,7 +10,8 @@
 - deck is shuffled, split into 2 eqaul piles
 - each player takes turns to flip their TOP CARD (face-up)
 - highest card wins that hand (collect both players cards)
-- if cards are the same, deal 2 cards and winner takes all cards
+    (A>K>Q>J) - Ace is the highest card 
+- if cards are the same, deal 3 cards, flip 4th and winner takes all cards
 - when a hand is won, the collected cards goes to the bottom of the deck
 - game is over when 1 player has collected all 52 cards
 

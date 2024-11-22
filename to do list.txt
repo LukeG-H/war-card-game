@@ -12,3 +12,6 @@ DONE # 7 create 'playround' function for 1 round of each player flipping 1 card
 DONE # 8 create logic for deciding which player won the round, or if draw: go to 'war'
 DONE # 9 create 'war' function that will play out the 'war' scenario before returning back to main game
 # 10 check during war if each player has 0 cards, otherwise pop from empty list error
+# 11 abstract classes into separate file
+# 12 tidy-up / refactor code for readability
+# 13 change 'check number of cards' to include if 1 player has 52 cards, as this means the other player must have 0 cards

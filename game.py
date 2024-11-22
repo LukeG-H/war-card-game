@@ -57,8 +57,6 @@ def setUpGame(deck):
 def playGame(player1, player2):
     player1_hand = player1
     player2_hand = player2
-    player1_turns = 0
-    player2_turns = 0
     
     game_won = False
     count_rounds = 0
@@ -86,9 +84,6 @@ def playGame(player1, player2):
             rounds_won[round_winner] += 1
             
             count_rounds += 1
-    # don't need player turns -> will be the same as 'rounds'
-            player1_turns += 1
-            player2_turns += 1
     # comment this out for actual game -> set to True to play 1 round of game (for test purposes)     
             game_won = True
             print(f"ROUND WINNER: {round_winner}\n")
