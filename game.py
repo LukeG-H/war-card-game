@@ -102,13 +102,9 @@ def playRounds(player1_hand, player2_hand):
     round_winner, winnings = decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, player2_hand)
     
     if round_winner == "Player 1":
-        # player1_hand.append(player2_flipped_card)
-        # player1_hand.append(player1_flipped_card)
         player1_hand.extend(winnings)
     
     if round_winner == "Player 2":
-        # player2_hand.append(player1_flipped_card)
-        # player2_hand.append(player2_flipped_card)
         player2_hand.extend(winnings)
         
     return round_winner
@@ -118,6 +114,7 @@ def decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, playe
         p1_str = player1_flipped_card.split(" ")[0]
         p2_str = player2_flipped_card.split(" ")[0]
         winnings = [player1_flipped_card, player2_flipped_card]
+
 # set the card letters to their equivalent values, as strings
         if p1_str or p2_str in ('A','K','Q','J'):
             if p1_str == 'A':
@@ -139,12 +136,12 @@ def decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, playe
                 p1_str = '11'
             if p2_str == 'J':
                 p2_str = '11'
+
 # convert the string values of each card into ints
         p1_value = int(p1_str)
         p2_value = int(p2_str)
         print(f"{p1_value} vs {p2_value}")
-        # print(type(p1_value), type(p2_value))
-        # print(p1_value + 1, p2_value + 1)
+
  # determine which card is 'higher' in value and set the winner, if cards are equal then go to war       
         if p1_value > p2_value:
             winner = "Player 1"
@@ -157,7 +154,7 @@ def decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, playe
 
 
 def goToWar(player1_hand, player2_hand):
-# TODO need to check if either player has 0 cards during the 'war' otherwise 'pop from empty list error'
+# TODO need to check if either player has 0 cards during the 'war' otherwise 'pop from empty list error' -> probably best to make a function
     war_cards_pot = []
     for _ in range(0,3):
         player1_carddown = player1_hand.pop(0)
@@ -176,8 +173,8 @@ def goToWar(player1_hand, player2_hand):
 
     war_winner, winning_cards = decideWhoWon(player1_war_card,player2_war_card,player1_hand,player2_hand)
     print(f"WAR WINNER: {war_winner}")
+
     war_cards_pot.extend(winning_cards)
-    # winner = "DRAW"
     return war_winner, war_cards_pot
 
 
@@ -186,7 +183,6 @@ def main():
     player1_hand, player2_hand = setUpGame(deck)
     winner = playGame(player1_hand,player2_hand)
     print(f"The Winner is: {winner}")
-    #  top_card_P1 = player1_hand[0]
 
 if __name__ == '__main__':
     main()
