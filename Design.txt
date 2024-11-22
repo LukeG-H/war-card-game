@@ -1,0 +1,85 @@
+###################
+#       WAR       #
+###################
+# GAME DESIGN DOC #
+###################
+
+# RULES #
+- 1 deck of 52 cards
+- 2 players
+- deck is shuffled, split into 2 eqaul piles
+- each player takes turns to flip their TOP CARD (face-up)
+- highest card wins that hand (collect both players cards)
+- if cards are the same, deal 2 cards and winner takes all cards
+- when a hand is won, the collected cards goes to the bottom of the deck
+- game is over when 1 player has collected all 52 cards
+
+# NEED TO KNOW HOW TO DO STUFF #
+- shuffle (randomise)
+- split deck into 2 equal piles
+- count each player's TOTAL CARDS 
+    - if player 1 has 0 cards
+        player 2 wins
+    - if player 1 has 52 cards
+        player 1 wins
+- alternate between playeys flipping cards
+- determine the outcome of each hand
+- allocate cards to player that wins each hand
+
+# GAME LOGIC # 
+
+START:
+1. Shuffle deck of cards
+2. Split deck into 2 separate 'hands' (P1 & P2)
+3. While game has not been won:
+4.  if player 1 has 0 cards:
+        player 2 wins - game won = true
+    elif player 1 has 52 cards:
+        player 1 wins - game won = true
+    else:
+    continue game
+5. player 1 flips 1 card
+6. player 2 flips 1 card
+7.  if player 1's card is higher than player 2's card:
+        player 1 takes all flipped cards
+        go back to step 4.
+    elif both cards are the same:
+        flip 2 cards each:
+            if player 1 has at least 2 cards in the deck:
+                player 1 flips 2 cards
+
+            elif player 1 has 1 card in the deck:
+                player 1 flips 1 card
+
+            if player 2 has at least 2 cards in the deck:
+                player 2 flips 2 cards
+            elif player 2 has 1 card in the deck:
+                player 2 flips 1 card
+            
+            go to step 7
+    else:
+        player 2 takes all flipped cards
+        go back to step 4
+
+# CONCEPTS # 
+-> class hierarchy
+    - cards -> class (number values, suits)
+    - decks -> class (holds the cards (x52))
+    - players -> 2 players (holds cards -> array / list)
+    - games
+
+-> collections management
+    - shuffling
+    - dealing
+
+-> game state handling
+    - turn based LOGIC
+    - random sample generation
+    - track scores
+    - input validation
+
+# DATA STRUCTURES #
+    - queues
+    - stacks
+    - lists (arrays)
+

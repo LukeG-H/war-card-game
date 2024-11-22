@@ -1,0 +1,14 @@
+TODO LIST:
+GAME SETUP:
+DONE # 1 create the card class
+DONE # 2 create the deck class
+DONE # 3 create the shuffle function
+DONE # 4 create the split function to split the deck in 2
+DONE # 5 create 2 hands (1 for player 1, 1 for player 2)
+
+PLAY GAME:
+DONE # 6 create 'playGame' function that holds the results of each round and overall game
+DONE # 7 create 'playround' function for 1 round of each player flipping 1 card
+DONE # 8 create logic for deciding which player won the round, or if draw: go to 'war'
+DONE # 9 create 'war' function that will play out the 'war' scenario before returning back to main game
+# 10 check during war if each player has 0 cards, otherwise pop from empty list error
