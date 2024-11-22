@@ -1,40 +1,60 @@
 from game_setup import *
 
 
+def isGameWon(player1_hand, player2_hand):
+    game_won = False
+    winner = None
+
+    if len(player1_hand) == 0:
+        game_won = True
+        winner = "Player 2"
+    elif len(player1_hand) == 52:
+        game_won = True
+        winner = "Player 1"
+    elif len(player2_hand) == 0:
+        game_won = True
+        winner = "Player 1"
+    elif len(player2_hand) == 52:
+        game_won = True
+        winner = "Player 2"
+    return game_won, winner
+
+
 def playGame(player1, player2):
     player1_hand = player1
     player2_hand = player2
     
     game_won = False
+    game_draw = False
     count_rounds = 0
     rounds_won = {}
-    winner = ""
+    # winner = ""
     
     # print(f"P1 BEFORE:\n{player1_hand}\n\nP2 BEFORE:\n{player2_hand}\n")
+    while not game_won and not game_draw:
+        game_won, winner = isGameWon(player1_hand, player2_hand)
+        
+        if game_won:
+            break
+        round_winner = playRounds(player1_hand,player2_hand)
     
-    while not game_won:
-        if len(player1_hand) == 0:
-            winner = "Player 2"
-            game_won = True
-
-        elif len(player2_hand) == 0:
-            winner = "Player 1"
-            game_won = True
+        if round_winner not in rounds_won:
+            rounds_won[round_winner] = 0
+        rounds_won[round_winner] += 1
         
-        else:
-            round_winner = playRounds(player1_hand,player2_hand)
-        
-            if round_winner not in rounds_won:
-                rounds_won[round_winner] = 0
-            rounds_won[round_winner] += 1
-            
-            count_rounds += 1
-    # comment this out for actual game -> set to True to play 1 round of game (for test purposes)     
-            game_won = True
-            print(f"ROUND WINNER: {round_winner}\n")
+        count_rounds += 1
 
-    # print(f"P1 AFTER:\n{player1_hand}\n\nP2 AFTER:\n{player2_hand}\n")
+# comment this out for actual game -> set to True to play 1 round of game (for test purposes)     
+        # game_won = True
+        print(f"ROUND WINNER: {round_winner}\n")
 
+        if count_rounds >= 1000:
+            game_draw = True
+            print(f"Reached {count_rounds} Rounds... Call it a draw!")
+# TODO if draw -> player with highest number of cards wins, or if the same player that won highest number of rounds, or nobody
+
+    # print(f"Player 1's Hand AFTER:\n{player1_hand}\n\nPlayer 2's Hand AFTER:\n{player2_hand}\n")
+    print(f"Player 1 has: {len(player1_hand)} cards and Player 2 has: {len(player2_hand)} cards")
     print(f"After {count_rounds} rounds, the number of rounds won by each player was: {rounds_won}")
             
     return winner
@@ -101,30 +121,37 @@ def decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, playe
 
 
 def goToWar(player1_hand, player2_hand):
-# TODO need to check if either player has 0 cards during the 'war' otherwise 'pop from empty list error' -> probably best to make a function
+# DONE: need to check if either player has 0 cards during the 'war' otherwise 'pop from empty list error' -> probably best to make a function
     war_cards_pot = []
     print("# WAR ROUND #\n")
 
     for _ in range(0,3):
-        player1_carddown = player1_hand.pop(0)
-        war_cards_pot.append(player1_carddown)
-        player2_carddown = player2_hand.pop(0)
-        war_cards_pot.append(player2_carddown)
+        game_won, winner = isGameWon(player1_hand, player2_hand)
+        if game_won:
+            return winner, war_cards_pot
+        else:
+            player1_carddown = player1_hand.pop(0)
+            war_cards_pot.append(player1_carddown)
+            player2_carddown = player2_hand.pop(0)
+            war_cards_pot.append(player2_carddown)
     
     # print(f"WAR CARDS POT: {war_cards_pot}")
     # print(f"P1 Hand: {player1_hand}\nP2 Hand: {player2_hand}")
+    game_won, winner = isGameWon(player1_hand, player2_hand)
+    if game_won:
+        return winner, war_cards_pot
+    else:
+        player1_war_card = player1_hand.pop(0)
+        print(f"P1 War card: {player1_war_card}")
 
-    player1_war_card = player1_hand.pop(0)
-    print(f"P1 War card: {player1_war_card}")
+        player2_war_card = player2_hand.pop(0)
+        print(f"P2 War card: {player2_war_card}")
 
-    player2_war_card = player2_hand.pop(0)
-    print(f"P2 War card: {player2_war_card}")
+        war_winner, winning_cards = decideWhoWon(player1_war_card,player2_war_card,player1_hand,player2_hand)
+        print(f"WAR WINNER: {war_winner}")
 
-    war_winner, winning_cards = decideWhoWon(player1_war_card,player2_war_card,player1_hand,player2_hand)
-    print(f"WAR WINNER: {war_winner}")
-
-    war_cards_pot.extend(winning_cards)
-    return war_winner, war_cards_pot
+        war_cards_pot.extend(winning_cards)
+        return war_winner, war_cards_pot
 
 
 def main():
