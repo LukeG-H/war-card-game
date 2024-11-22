@@ -118,7 +118,6 @@ def decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, playe
 
 
 def goToWar(player1_hand, player2_hand):
-# DONE: need to check if either player has 0 cards during the 'war' otherwise 'pop from empty list error' -> probably best to make a function
     war_cards_pot = []
     print("# WAR ROUND #")
 
@@ -131,6 +130,7 @@ def goToWar(player1_hand, player2_hand):
         war_cards_pot.append(player1_carddown)
         player2_carddown = player2_hand.pop(0)
         war_cards_pot.append(player2_carddown)
+        
     # prints to check the correct cards are winning and being added to other players hand
     # print(f"WAR CARDS POT: {war_cards_pot}")
     # print(f"P1 Hand: {player1_hand}\nP2 Hand: {player2_hand}")

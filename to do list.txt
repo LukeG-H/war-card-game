@@ -11,7 +11,10 @@ DONE # 6 create 'playGame' function that holds the results of each round and ove
 DONE # 7 create 'playround' function for 1 round of each player flipping 1 card
 DONE # 8 create logic for deciding which player won the round, or if draw: go to 'war'
 DONE # 9 create 'war' function that will play out the 'war' scenario before returning back to main game
-# 10 check during war if each player has 0 cards, otherwise pop from empty list error
-# 11 abstract classes into separate file
-# 12 tidy-up / refactor code for readability
-# 13 change 'check number of cards' to include if 1 player has 52 cards, as this means the other player must have 0 cards
+DONE # 10 check during war if each player has 0 cards, otherwise pop from empty list error
+DONE # 11 abstract classes into separate file
+DONE # 12 tidy-up / refactor code for readability
+DONE # 13 change 'check number of cards' to include if 1 player has 52 cards, as well as if they have 0 cards
+# 14 add logic for determining winner if rounds reach max number of 1500
+# abstract the decideWhoWon function into 2 functions; 1 containing the face-card value logic
+
