@@ -40,7 +40,7 @@ def playGame(player1, player2):
             rounds_won[round_winner] = 0
         rounds_won[round_winner] += 1
         count_rounds += 1
-        
+
         print(f"ROUND WINNER: {round_winner}\n")
 
 # comment this out for actual game -> set to True to play 1 round of game (for test purposes)     
