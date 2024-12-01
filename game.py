@@ -1,7 +1,7 @@
 from game_setup import *
 
 
-def isGameWon(player1_hand, player2_hand):
+def is_game_won(player1_hand, player2_hand):
     game_won = False
     winner = 'Nobody'
 
@@ -20,7 +20,7 @@ def isGameWon(player1_hand, player2_hand):
     return game_won, winner
 
 
-def playGame(player1, player2):
+def play_game(player1, player2):
     player1_hand = player1
     player2_hand = player2
     game_won = False
@@ -30,11 +30,11 @@ def playGame(player1, player2):
     
     # print(f"P1 BEFORE:\n{player1_hand}\n\nP2 BEFORE:\n{player2_hand}\n")
     while not game_won and not game_draw:
-        game_won, winner = isGameWon(player1_hand, player2_hand)
+        game_won, winner = is_game_won(player1_hand, player2_hand)
         
         if game_won:
             break
-        round_winner = playRounds(player1_hand,player2_hand)
+        round_winner = play_rounds(player1_hand,player2_hand)
     
         if round_winner not in rounds_won:
             rounds_won[round_winner] = 0
@@ -56,14 +56,14 @@ def playGame(player1, player2):
     return winner
 
 
-def playRounds(player1_hand, player2_hand):
+def play_rounds(player1_hand, player2_hand):
     player1_flipped_card = player1_hand.pop(0)
     print(f"Player 1 Card: {player1_flipped_card}")
 
     player2_flipped_card = player2_hand.pop(0)
     print(f"Player 2 Card: {player2_flipped_card}")
 
-    round_winner, winnings = decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, player2_hand)
+    round_winner, winnings = decide_who_won(player1_flipped_card, player2_flipped_card, player1_hand, player2_hand)
     
     if round_winner == "Player 1":
         player1_hand.extend(winnings)
@@ -72,7 +72,7 @@ def playRounds(player1_hand, player2_hand):
     return round_winner
 
 
-def decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, player2_hand):
+def decide_who_won(player1_flipped_card, player2_flipped_card, player1_hand, player2_hand):
 # split player card string into list of elements and get the first index
         p1_str = player1_flipped_card.split(" ")[0]
         p2_str = player2_flipped_card.split(" ")[0]
@@ -112,17 +112,17 @@ def decideWhoWon(player1_flipped_card, player2_flipped_card, player1_hand, playe
         elif p1_value < p2_value:
             winner = "Player 2"
         else:
-            winner, war_winnings = goToWar(player1_hand,player2_hand)
+            winner, war_winnings = go_to_war(player1_hand,player2_hand)
             winnings.extend(war_winnings)
         return winner, winnings
 
 
-def goToWar(player1_hand, player2_hand):
+def go_to_war(player1_hand, player2_hand):
     war_cards_pot = []
     print("# WAR ROUND #")
 
     for _ in range(0,3):
-        game_won, winner = isGameWon(player1_hand, player2_hand)
+        game_won, winner = is_game_won(player1_hand, player2_hand)
         
         if game_won:
             return winner, war_cards_pot
@@ -134,7 +134,7 @@ def goToWar(player1_hand, player2_hand):
     # prints to check the correct cards are winning and being added to other players hand
     # print(f"WAR CARDS POT: {war_cards_pot}")
     # print(f"P1 Hand: {player1_hand}\nP2 Hand: {player2_hand}")
-    game_won, winner = isGameWon(player1_hand, player2_hand)
+    game_won, winner = is_game_won(player1_hand, player2_hand)
 
     if game_won:
         return winner, war_cards_pot
@@ -144,7 +144,7 @@ def goToWar(player1_hand, player2_hand):
     player2_war_card = player2_hand.pop(0)
     print(f"Player 2 War card: {player2_war_card}")
 
-    war_winner, winning_cards = decideWhoWon(player1_war_card,player2_war_card,player1_hand,player2_hand)
+    war_winner, winning_cards = decide_who_won(player1_war_card,player2_war_card,player1_hand,player2_hand)
     print(f"WAR WINNER: {war_winner}")
 
     war_cards_pot.extend(winning_cards)
@@ -152,9 +152,9 @@ def goToWar(player1_hand, player2_hand):
 
 
 def main():
-    deck = setUpDeck()
-    player1_hand, player2_hand = setUpGame(deck)
-    winner = playGame(player1_hand,player2_hand)
+    deck = set_up_deck()
+    player1_hand, player2_hand = set_up_game(deck)
+    winner = play_game(player1_hand,player2_hand)
     print(f"THE WINNER IS: {winner}")
 
 if __name__ == '__main__':

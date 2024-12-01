@@ -20,20 +20,20 @@ class Deck:
     def __str__(self):
         return f"{self.deck}"
     
-    def createDeck(self):
+    def create_deck(self):
         for value in VALUES:
             for suit in SUITS:
                 cards = str(Card(value, suit))
                 self.deck.append(cards)
     
-    def shuffleDeck(self):
+    def shuffle_deck(self):
         random.shuffle(self.deck)
 
-    def dealCardFromDeck(self):
+    def deal_card_from_deck(self):
         card = self.deck.pop(0)
         return card
     
-    def splitDeckInTwo(self):
+    def split_deck_in_two(self):
         first_half = []
         second_half = []
         
