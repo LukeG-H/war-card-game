@@ -16,15 +16,13 @@ class Card:
 class Deck:
     def __init__(self):
         self.deck = []
+        for value in VALUES:
+            for suit in SUITS:
+                card = Card(value, suit)
+                self.deck.append(str(card))
     
     def __str__(self):
         return f"{self.deck}"
-    
-    def create_deck(self):
-        for value in VALUES:
-            for suit in SUITS:
-                cards = str(Card(value, suit))
-                self.deck.append(cards)
     
     def shuffle_deck(self):
         random.shuffle(self.deck)
@@ -37,7 +35,7 @@ class Deck:
         first_half = []
         second_half = []
         
-        for _ in range(0,26):
+        for card in range(0,26):
             first_half.append(self.deck.pop(0))
 
         second_half = (self.deck)

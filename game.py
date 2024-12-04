@@ -1,4 +1,6 @@
-from game_setup import *
+from card_deck_classes import *
+# 'game_setup' no longer required. Keeping for history #
+# from game_setup import *
 
 
 def is_game_won(player1_hand, player2_hand):
@@ -152,10 +154,12 @@ def go_to_war(player1_hand, player2_hand):
 
 
 def main():
-    deck = set_up_deck()
-    player1_hand, player2_hand = set_up_game(deck)
+    new_deck = Deck()
+    new_deck.shuffle_deck()
+    player1_hand, player2_hand = new_deck.split_deck_in_two()
     winner = play_game(player1_hand,player2_hand)
     print(f"THE WINNER IS: {winner}")
 
+          
 if __name__ == '__main__':
     main()
