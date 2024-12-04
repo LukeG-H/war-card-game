@@ -1,5 +1,5 @@
 from card_deck_classes import *
-# 'game_setup' no longer required. Keeping for history #
+## 'game_setup' no longer required. Keeping for history ##
 # from game_setup import *
 
 
@@ -45,7 +45,7 @@ def play_game(player1, player2):
 
         print(f"ROUND WINNER: {round_winner}\n")
 
-# comment this out for actual game -> set to True to play 1 round of game (for test purposes)     
+## comment this out for actual game -> set to True to play 1 round of game (for test purposes) ##
         # game_won = True
         if count_rounds >= 1500:
             game_draw = True
@@ -75,12 +75,12 @@ def play_rounds(player1_hand, player2_hand):
 
 
 def decide_who_won(player1_flipped_card, player2_flipped_card, player1_hand, player2_hand):
-# split player card string into list of elements and get the first index
+## split player card string into list of elements and get the first index ##
         p1_str = player1_flipped_card.split(" ")[0]
         p2_str = player2_flipped_card.split(" ")[0]
         winnings = [player1_flipped_card, player2_flipped_card]
 
-# set the card letters to their equivalent values, as strings
+## set the card letters to their equivalent values, as strings ##
 # TODO abstract this out or make it better. this looks hideous
         if p1_str or p2_str in ('A','K','Q','J'):
             if p1_str == 'A':
@@ -103,12 +103,12 @@ def decide_who_won(player1_flipped_card, player2_flipped_card, player1_hand, pla
             if p2_str == 'J':
                 p2_str = '11'
 
-# convert the string values of each card into ints
+## convert the string values of each card into ints ##
         p1_value = int(p1_str)
         p2_value = int(p2_str)
         print(f"{p1_value} vs {p2_value}\n")
 
- # determine which card is 'higher' in value and set the winner, if cards are equal then go to war       
+ ## determine which card is 'higher' in value and set the winner, if cards are equal then go to war ##
         if p1_value > p2_value:
             winner = "Player 1"
         elif p1_value < p2_value:
@@ -133,7 +133,8 @@ def go_to_war(player1_hand, player2_hand):
         player2_carddown = player2_hand.pop(0)
         war_cards_pot.append(player2_carddown)
         
-    # prints to check the correct cards are winning and being added to other players hand
+## prints to check the correct cards are winning and being added to other players hand ##
+
     # print(f"WAR CARDS POT: {war_cards_pot}")
     # print(f"P1 Hand: {player1_hand}\nP2 Hand: {player2_hand}")
     game_won, winner = is_game_won(player1_hand, player2_hand)
