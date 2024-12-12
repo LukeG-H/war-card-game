@@ -16,5 +16,5 @@ DONE # 11 abstract classes into separate file
 DONE # 12 tidy-up / refactor code for readability
 DONE # 13 change 'check number of cards' to include if 1 player has 52 cards, as well as if they have 0 cards
 # 14 add logic for determining winner if rounds reach max number of 1500
-# abstract the decideWhoWon function into 2 functions; 1 containing the face-card value logic
+# 15 abstract the decideWhoWon function into 2 functions; 1 containing the face-card value logic
 

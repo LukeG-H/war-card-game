@@ -158,7 +158,7 @@ def main():
     new_deck = Deck()
     new_deck.shuffle_deck()
     player1_hand, player2_hand = new_deck.split_deck_in_two()
-    winner = play_game(player1_hand,player2_hand)
+    winner = play_game(player1_hand, player2_hand)
     print(f"THE WINNER IS: {winner}")
 
           
